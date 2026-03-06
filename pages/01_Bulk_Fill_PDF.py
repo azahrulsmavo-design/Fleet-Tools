@@ -3,6 +3,7 @@ import pandas as pd
 import fitz  # PyMuPDF
 import io
 import zipfile
+import os
 
 # Set up the page config first before any other st calls
 st.set_page_config(
@@ -95,11 +96,16 @@ def stamp_pdf(template_path, data):
     return pdf_bytes
 
 @st.cache_data
-def load_data(filepath="MASTER.csv"):
+def load_data(filename="MASTER.csv"):
     try:
+        current_dir = os.path.dirname(__file__)
+        root_dir = os.path.dirname(current_dir)
+        filepath = os.path.join(root_dir, filename)
+        
         df = pd.read_csv(filepath, sep=",", dtype=str)
         return df
     except Exception as e:
+        st.error(f"Error detail: {e}")
         return None
 
 # Page UI
@@ -152,7 +158,11 @@ if submitted:
                     }
                     
                     try:
-                        pdf_bytes = stamp_pdf("Template.pdf", data_to_stamp)
+                        current_dir = os.path.dirname(__file__)
+                        root_dir = os.path.dirname(current_dir)
+                        template_path = os.path.join(root_dir, "Template.pdf")
+                        
+                        pdf_bytes = stamp_pdf(template_path, data_to_stamp)
                         
                         safe_nopol = str(row.get('NOPOL', '')).replace(" ", "_").replace("/", "-")
                         file_name = f"Surat_Pernyataan_{safe_nopol}.pdf"
