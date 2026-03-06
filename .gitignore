@@ -7,7 +7,6 @@ __pycache__/
 !/.streamlit/config.toml
 *.zip
 *.csv
-!MASTER.csv
 *.docx
 !Template.docx
 .DS_Store
