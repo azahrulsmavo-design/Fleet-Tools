@@ -1,15 +1,15 @@
-# 🚚 Fleet Management Tools Portal
+# Fleet Management Tools Portal
 
 Sebuah portal aplikasi web internal untuk menangani tugas-tugas operasional Fleet, dikembangkan dengan **Streamlit** dan **Python**, dan dirancang dengan arsitektur UI *Multi-page* yang ramping & scalable.
 
-## 🌟 Fitur Saat Ini
+## Fitur Saat Ini
 ### 1. Bulk Fill PDF
 Ketik atau menempelkan daftar **Nomor Polisi (Nopol)** dan tanggal surat, sistem akan secara otomatis:
 - Mencocokkan data dengan data aset pada `MASTER.csv`. 
 - Menulis (stamping) informasi *Merk, Tahun, Warna, No Rangka, No Mesin* ke dalam template PDF Fleet dengan pelurusan otomatis dan jenis huruf asli tanpa merusak gambar background template.
 - Membundel seluruh rekaman PDF yang di-generate menjadi satu file `.zip` siap download.
 
-## 🛠 Instalasi dan Menjalankan Lokal
+## Instalasi dan Menjalankan Lokal
 
 Karena bersifat aplikasi internal berbasis Python, ini instruksi untuk menjalankannya.
 
@@ -33,5 +33,5 @@ Karena bersifat aplikasi internal berbasis Python, ini instruksi untuk menjalank
    ```
    Aplikasi dapat diakses via Web Browser di `http://localhost:8501:`.
 
-## 📦 Menambahkan Tools Baru
+## Menambahkan Tools Baru
 Aplikasi didesain menggunakan fitur Multi-Pages. Jika kelak Anda ingin menambahkan Tool "Cek Perpanjangan Pajak", cukup buat file python baru di dalam folder `pages/` (Contoh: `pages/2_Pajak_Check.py`) dan ia akan langsung terdaftar di menu Navigasi utama sebelah kiri web.
