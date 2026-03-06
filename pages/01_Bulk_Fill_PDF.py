@@ -47,8 +47,7 @@ def stamp_pdf(template_path, data):
     Stamps data onto the existing PDF template using PyMuPDF.
     It preserves the original background, images, and layout.
     """
-    # doc = fitz.open(template_path) -> Now accepts a stream directly
-    doc = fitz.open(stream=template_path.read(), filetype="pdf")
+    doc = fitz.open(template_path)
     page = doc[0]
     
     # Coordinates (Approximate based on earlier extraction)
@@ -106,24 +105,12 @@ def load_data(filepath="MASTER.csv"):
 # Page UI
 st.markdown('<div class="banner"><h2>Bulk Fill PDF Documents</h2><p>Generate Surat Pernyataan secara massal dari Master Data.</p></div>', unsafe_allow_html=True)
 
-# File Uploaders
-col1, col2 = st.columns(2)
-with col1:
-    csv_file = st.file_uploader("Upload File Master Kendaraan (CSV)", type=['csv'])
-with col2:
-    pdf_template = st.file_uploader("Upload Template Surat (PDF)", type=['pdf'])
-
-if csv_file is None or pdf_template is None:
-    st.info("Silakan unggah file `MASTER.csv` dan `Template.pdf` untuk melanjutkan.")
-    st.stop()
-
-# Load Data from uploaded CSV
-df_master = load_data(csv_file)
+df_master = load_data()
 if df_master is None:
-    st.error("Gagal membaca file CSV. Pastikan format pemisahnya koma.")
+    st.error("Gagal membaca file `MASTER.csv`. Pastikan file berada di folder yang sama.")
     st.stop()
     
-st.success(f"Berhasil memuat Master Data dengan {len(df_master)} baris data.")
+st.info(f"Loaded Master Data with {len(df_master)} records.")
 
 with st.form("bulk_fill_form"):
     st.subheader("Parameter Generate")
@@ -165,9 +152,7 @@ if submitted:
                     }
                     
                     try:
-                        # Reset template cursor position to beginning before each stamp
-                        pdf_template.seek(0)
-                        pdf_bytes = stamp_pdf(pdf_template, data_to_stamp)
+                        pdf_bytes = stamp_pdf("Template.pdf", data_to_stamp)
                         
                         safe_nopol = str(row.get('NOPOL', '')).replace(" ", "_").replace("/", "-")
                         file_name = f"Surat_Pernyataan_{safe_nopol}.pdf"

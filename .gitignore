@@ -2,10 +2,13 @@
 env/
 __pycache__/
 *.pdf
+!Template.pdf
 .streamlit/
 !/.streamlit/config.toml
 *.zip
 *.csv
+!MASTER.csv
 *.docx
+!Template.docx
 .DS_Store
 *.pyc

@@ -25,12 +25,13 @@ Karena bersifat aplikasi internal berbasis Python, ini instruksi untuk menjalank
    ```bash
    pip install -r requirements.txt
    ```
-4. **Jalankan Aplikasi:**
+4. **Siapkan Data & Template:**
+   Pastikan file `MASTER.csv` dan `Template.pdf` berada di folder utama (sejajar dengan `app.py`). Karena repositori ini diset *private*, data armada aman untuk ikut tersimpan di GitHub.
+5. **Jalankan Aplikasi:**
    ```bash
    streamlit run app.py
    ```
    Aplikasi dapat diakses via Web Browser di `http://localhost:8501:`.
-   *Catatan: Anda akan diminta untuk mengunggah `MASTER.csv` dan `Template.pdf` langsung melalui antarmuka web saat pertama kali membuka alat Bulk Fill.*
 
 ## Menambahkan Tools Baru
 Aplikasi didesain menggunakan fitur Multi-Pages. Jika kelak Anda ingin menambahkan Tool "Cek Perpanjangan Pajak", cukup buat file python baru di dalam folder `pages/` (Contoh: `pages/2_Pajak_Check.py`) dan ia akan langsung terdaftar di menu Navigasi utama sebelah kiri web.
