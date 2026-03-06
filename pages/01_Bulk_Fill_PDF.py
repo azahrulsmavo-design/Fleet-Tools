@@ -73,7 +73,7 @@ def stamp_pdf(template_path, data):
         (data['Warna'], fitz.Point(170, 395)),        # Y: 395
         (data['No_Rangka'], fitz.Point(170, 408)),    # Y: 408
         (data['No_Mesin'], fitz.Point(170, 421)),     # Y: 421
-        (data['Tanggal_Location'], fitz.Point(46.4, 510)) # Place it above "Jakarta, Compliance"
+        (data['Tanggal_Location'], fitz.Point(86, 532)) # Placed immediately after "Jakarta, " which ends at X=83.5
     ]
     
     for text_string, point in text_insertions:
@@ -121,7 +121,7 @@ st.info(f"Loaded Master Data with {len(df_master)} records.")
 with st.form("bulk_fill_form"):
     st.subheader("Parameter Generate")
     
-    tanggal_input = st.text_input("Tanggal Dokumen (Tampil di bawah PDF)", value="Jakarta, 06 Maret 2026", help="Akan ditulis tepat di bagian bawah sebelum ttd.")
+    tanggal_input = st.text_input("Tanggal Dokumen", value="06 Maret 2026", help="Akan ditulis tepat di sebelah kata 'Jakarta,' pada bagian bawah PDF.")
     
     nopol_input = st.text_area("Daftar Nomor Polisi (Pisahkan dengan koma)", placeholder="B 9987 TXV, DD 8952 MO, B 9081 TXV", height=100)
     
