@@ -88,9 +88,9 @@ def stamp_pdf(template_path, data):
                 color=color
             )
             
-    # Save to BytesIO
+    # Save to BytesIO with optimization to drastically reduce file size
     pdf_bytes = io.BytesIO()
-    doc.save(pdf_bytes)
+    doc.save(pdf_bytes, garbage=4, deflate=True, clean=True)
     doc.close()
     pdf_bytes.seek(0)
     return pdf_bytes
