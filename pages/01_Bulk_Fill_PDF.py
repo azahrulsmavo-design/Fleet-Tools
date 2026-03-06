@@ -67,12 +67,12 @@ def stamp_pdf(template_path, data):
     
     # Text positions calculated to match the template blank lines perfectly
     text_insertions = [
-        (data['Nopol'], fitz.Point(200, 356)),        # Y: 356
-        (data['Merk_Tipe'], fitz.Point(200, 369)),    # Y: 369
-        (data['Tahun'], fitz.Point(200, 382)),        # Y: 382
-        (data['Warna'], fitz.Point(200, 395)),        # Y: 395
-        (data['No_Rangka'], fitz.Point(200, 408)),    # Y: 408
-        (data['No_Mesin'], fitz.Point(200, 421)),     # Y: 421
+        (data['Nopol'], fitz.Point(170, 356)),        # Y: 356
+        (data['Merk_Tipe'], fitz.Point(170, 369)),    # Y: 369
+        (data['Tahun'], fitz.Point(170, 382)),        # Y: 382
+        (data['Warna'], fitz.Point(170, 395)),        # Y: 395
+        (data['No_Rangka'], fitz.Point(170, 408)),    # Y: 408
+        (data['No_Mesin'], fitz.Point(170, 421)),     # Y: 421
         (data['Tanggal_Location'], fitz.Point(46.4, 510)) # Place it above "Jakarta, Compliance"
     ]
     
